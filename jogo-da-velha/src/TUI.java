@@ -4,11 +4,19 @@ public class TUI implements TabUI{
     public TUI(){
         //iniciando tabuleiro
         tui= new char[17][17];
+
+        //iniciando o desenho do jogo da velha com todas as casas vazias:
+        reiniciarTUI();
     }
 
     @Override
     public void desenheTabuleiro(char[][] tab) {
+        //desenhando a linha 0 e coluna 0 do tabuleiro:
         
+        if(tab[0][0]=='X'){ //se a posicao tab[0][0] estiver com X:
+
+        }
+
     
     }
 
@@ -45,7 +53,7 @@ public class TUI implements TabUI{
         }
 
         //desenhando:
-        
+
         //em todas as linhas, as colunas 5 e 11 sao '#':
         for(int l=0 ; l<=16 ; l++){
             tui[l][5]= '#';
