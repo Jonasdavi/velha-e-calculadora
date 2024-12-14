@@ -16,7 +16,7 @@ public class Tabuleiro extends Tabuleiro_base{
     @Override
     public void exibirTabuleiro() {
 
-        //tamanho das linhas e colunas do tabuleiro:
+        //tamanho de linhas ou colunas do tabuleiro:
         int tamanhoTabuleiro= getTabuleiro().length;
 
         //Laços para percorrer toda a matriz e exibila:
