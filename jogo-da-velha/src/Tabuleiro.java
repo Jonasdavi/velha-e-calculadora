@@ -58,6 +58,17 @@ public class Tabuleiro extends Tabuleiro_base{
             //entao pode jogar
             getTabuleiro()[linha][coluna]= jogadorAtual.getMarcador(); //a posição escolhida muda para o caractere do jogador atual (X ou O)
 
+            //almentando o numero de jogadas
+            numeroJogadas++;
+
+            //mudando a vez do jogador atual
+            if(jogadorAtual == getJogador1()){
+                jogadorAtual= getJogador2();
+            }
+            else{
+                jogadorAtual= getJogador1();
+            }
+
             return true; //jogada efetuada
         }
         else{ //se o local nao estiver vazio
@@ -164,7 +175,7 @@ public class Tabuleiro extends Tabuleiro_base{
             //apos fazer toda essa verificação com o 'X', volta lá pro inicio do laco com o valor do verificador como 'O':
             verificador= 'O';
         } 
-        
+
         //se apos verificar com o 'X', e 'O', nao retornar nada, significa que nao houve vitoria, entao:
         return '*'; //retorne '*', indicando que nenhum dos dois ganharam ainda
 
@@ -196,4 +207,7 @@ public class Tabuleiro extends Tabuleiro_base{
         }
     }
     
+    public int getNumJogadas(){
+        return numeroJogadas;
+    }
 }
