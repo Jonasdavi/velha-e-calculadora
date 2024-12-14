@@ -71,7 +71,103 @@ public class Tabuleiro extends Tabuleiro_base{
 
     @Override
     public char verificarVencedor() {
+        //criando uma variavel que sirva para verificar a vitoria do 'X', depois do 'O'
+        char verificador = 'X'; //apos verificar se houve a vitoria do 'X', ele virará 'O' e refazerá a mesma verificação
+
+        //laço que fará toda a verificação de vitoria, roda duas vezes: na primeira verifica o 'X', depois o 'O' conforme o valor da variavel "verificador":
+        for (int i=0 ; i<2 ; i++){
+            //lógica para a verificação:
+
+            //verificando se as diagonais são todas 'X' ou todas 'O':
+            if(getTabuleiro()[0][0]==verificador && getTabuleiro()[1][1]==verificador && getTabuleiro()[2][2]==verificador){
+                /*
+                  0 1 2
+                0 x * * 
+                1 * x *
+                2 * * x
+                 
+                 */
+                //entao há vitoria do caractere que estar sendo verificado:
+                return verificador;
+            }
+            //se for a outra diagonal:
+            else if(getTabuleiro()[0][2]==verificador && getTabuleiro()[1][1]==verificador && getTabuleiro()[2][0]==verificador){
+                /*
+                  0 1 2
+                0 * * x 
+                1 * x *
+                2 x * *
+                 
+                 */
+
+                //entao há vitoria do caractere que estar sendo verificado:
+                return verificador;
+            }
+
+            //verificando horizontais:
+            /*
+               0 1 2
+             0 x x x 
+             1 * * *
+             2 * * *
+             
+               0 1 2
+             0 * * *
+             1 x x x
+             2 * * *
+
+               0 1 2
+             0 * * * 
+             1 * * *
+             2 x x x
+
+             */
+            //após perceber que as colunas permanecem fixas em relaçao as linhas, e o que muda é apenas a linha
+            //uso um for para percorrer todas as 3 linhas, e deixo as 3 colunas fixas na verificação, apenas variando a linha
+            for(int l=0 ; l<3 ; l++){
+                //se uma linha horizontal inteira está com o mesmo caractere de verificaçao (X ou O):
+                if(getTabuleiro()[l][0]==verificador && getTabuleiro()[l][1]==verificador && getTabuleiro()[l][2]==verificador){
+                    //entao há vitoria do caractere que estar sendo verificado:
+                    return verificador;
+                }
+            }
+
+            //verificando horizontais:
+            /*
+               0 1 2
+             0 x * * 
+             1 x * *
+             2 x * *
+             
+               0 1 2
+             0 * x * 
+             1 * x * 
+             2 * x * 
+
+               0 1 2
+             0 * * x 
+             1 * * x
+             2 * * x
+
+             */
+            //após perceber que as linhas permanecem fixas em relaçao as coluna, e o que muda é apenas a linha
+            //uso um for para percorrer todas as 3 colunas, e deixo as 3 linhas fixas na verificação, apenas variando a coluna
+            for(int c=0 ; c<3 ; c++){
+                //se uma coluna vertical inteira está com o mesmo caractere de verificaçao (X ou O):
+                if(getTabuleiro()[0][c]==verificador && getTabuleiro()[1][c]==verificador && getTabuleiro()[2][c]==verificador){
+                    //entao há vitoria do caractere que estar sendo verificado:
+                    return verificador;
+                }
+            }
+
+            //caso nao entre em nenhum caso de vitoria:
+            //apos fazer toda essa verificação com o 'X', volta lá pro inicio do laco com o valor do verificador como 'O':
+            verificador= 'O';
+        } 
         
+        //se apos verificar com o 'X', e 'O', nao retornar nada, significa que nao houve vitoria, entao:
+        return '*'; //retorne '*', indicando que nenhum dos dois ganharam ainda
+
     }
 
     @Override
