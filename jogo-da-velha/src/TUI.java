@@ -216,7 +216,7 @@ public class TUI implements TabUI{
 
         //se o tab[1][0] for 'O':
         else if(tab[1][0]=='O'){
-            /*entao tenho que desenhar isso da linha e coluna 0 a 4 da tui desta forma:
+            /*entao tenho que desenhar isso da linha 6 a 10 e coluna 0 a 4 da tui desta forma:
 
                 0  1  2  3  4  5 
             5   #  #  #  #  #  #
@@ -303,7 +303,11 @@ public class TUI implements TabUI{
         }
         //se o tab[1][1] for vazio, ent nada é mudado (logo nao precisa do else)
 
-        
+
+
+
+
+
 
 
 
@@ -312,7 +316,7 @@ public class TUI implements TabUI{
             /*entao tenho que desenhar isso da linha 6 a 10 e coluna 12 a 16 da tui desta forma:
 
               11 12 13 14 15 16 
-            5  #  #  #  #  #  # 
+            5  #  #  #  #  #  #
             6  #  X  -  -  -  X  
             7  #  -  X  -  X  -   
             8  #  -  -  X  -  -  
@@ -345,7 +349,7 @@ public class TUI implements TabUI{
             8  #  O  -  -  -  O  
             9  #  O  -  -  -  O  
             10 #  -  O  O  O  -  
-            11 #  #  #  #  #  # 
+            11 #  #  #  #  #  #
             
             */
             //nas linhas 7, 8 e 9, as colunas 12 e 16 sempre são 'O':
@@ -362,6 +366,197 @@ public class TUI implements TabUI{
 
         }
         //se o tab[1][2] for vazio, ent nada é mudado (logo nao precisa do else)
+        
+
+
+
+
+
+        
+
+
+
+
+
+
+        //desenhando a linha 2 e coluna 0 do tabuleiro:
+        if(tab[2][0]=='X'){ //se a posicao tab[2][0] estiver com X:
+            /*entao tenho que desenhar isso da linha 12 a 16 e da coluna 0 a 4 da tui desta forma:
+
+                0  1  2  3  4  5 
+            11  #  #  #  #  #  # 
+            12  X  -  -  -  X  #  
+            13  -  X  -  X  -  #  
+            14  -  -  X  -  -  #  
+            15  -  X  -  X  -  # 
+            16  X  -  -  -  X  #  
+                 
+            
+            */
+            //na primeira diagonal:
+            // linha se inicia na 12, coluna se inicia na 0, toda vez que a linha almenta 1, a coluna almenta 1, até chegar na linha 16 e coluna 4:
+            for(int i=0 ; i<=4 ; i++){
+                tui[12+i][i]= 'X';
+            }
+
+            //na outra diagonal do 'X':
+            //linha se inicia na 12, coluna se inicia na 4, toda vez que a linha almenta 1, a coluna diminui 1, até chegar na linha 16 e coluna 0:
+            for(int i=0; i<=4; i++){
+                tui[12+i][4-i]= 'X';
+            }
+        }
+
+        //se o tab[2][0] for 'O':
+        else if(tab[2][0]=='O'){
+            /*entao tenho que desenhar isso da linha 12 a 16 e coluna 0 a 4 da tui desta forma:
+
+                0  1  2  3  4  5 
+            11  #  #  #  #  #  # 
+            12  -  O  O  O  -  #  
+            13  O  -  -  -  O  #  
+            14  O  -  -  -  O  #  
+            15  O  -  -  -  O  # 
+            16  -  O  O  O  -  #  
+                 
+            
+            */
+            //nas linhas 13, 14 e 15, as colunas 0 e 4 sempre são 'O':
+            for(int l=13 ; l<=15 ; l++){ //laço que percorre as linhas 13, 14 e 15
+                tui[l][0]= 'O';
+                tui[l][4]= 'O';
+            }
+
+            //nas colunas 1, 2 e 3, as linhas 12 e 16 sempre são 'O':
+            for(int c=1 ; c<=3 ; c++){ //laço que percorre as colunas 1, 2 e 3
+                tui[12][c]= 'O';
+                tui[16][c]= 'O';
+            }
+
+        }
+        //se o tab[2][0] for vazio, ent nada é mudado (logo nao precisa do else)
+
+
+
+
+        
+        //desenhando a linha 2 e coluna 1 do tabuleiro:
+        if(tab[2][1]=='X'){ //se a posicao tab[2][1] estiver com X:
+            /*entao tenho que desenhar isso da linha 12 a 16 e coluna 6 a 10 da tui desta forma:
+
+               5  6  7  8  9 10 11 
+            11 #  #  #  #  #  #  #  
+            12 #  X  -  -  -  X  # 
+            13 #  -  X  -  X  -  #  
+            14 #  -  -  X  -  -  # 
+            15 #  -  X  -  X  -  # 
+            16 #  X  -  -  -  X  # 
+                 
+            
+            */
+            //na primeira diagonal:
+            // linha se inicia na 12, coluna se inicia na 6, toda vez que a linha almenta 1, a coluna almenta 1, até chegar na linha 16 e coluna 10:
+            for(int i=0 ; i<=4 ; i++){
+                tui[12+i][6+i]= 'X';
+            }
+
+            //na outra diagonal do 'X':
+            //linha se inicia na 12, coluna se inicia na 10, toda vez que a linha almenta 1, a coluna diminui 1, até chegar na linha 16 e coluna 6:
+            for(int i=0; i<=4; i++){
+                tui[12+i][10-i]= 'X';
+            }
+        }
+
+        //se o tab[2][1] for 'O':
+        else if(tab[2][1]=='O'){
+            /*entao tenho que desenhar isso da linha 6 a 10 e coluna 6 a 10 da tui desta forma:
+
+               5  6  7  8  9 10 11 
+            11 #  #  #  #  #  #  # 
+            12 #  -  O  O  O  -  # 
+            13 #  O  -  -  -  O  #  
+            14 #  O  -  -  -  O  # 
+            15 #  O  -  -  -  O  # 
+            16 #  -  O  O  O  -  # 
+             
+            
+            */
+            //nas linhas 13, 14 e 15, as colunas 6 e 10 sempre são 'O':
+            for(int l=13 ; l<=15 ; l++){ //laço que percorre as linhas 13, 14 e 15
+                tui[l][6]= 'O';
+                tui[l][10]= 'O';
+            }
+
+            //nas colunas 7, 8 e 9, as linhas 12 e 16 sempre são 'O':
+            for(int c=7 ; c<=9 ; c++){ //laço que percorre as colunas 7, 8 e 9
+                tui[12][c]= 'O';
+                tui[16][c]= 'O';
+            }
+
+        }
+        //se o tab[2][1] for vazio, ent nada é mudado (logo nao precisa do else)
+
+
+
+
+
+
+        
+
+
+        //desenhando a linha 2 e coluna 2 do tabuleiro:
+        if(tab[2][2]=='X'){ //se a posicao tab[2][2] estiver com X:
+            /*entao tenho que desenhar isso da linha 12 a 16 e coluna 12 a 16 da tui desta forma:
+
+              11 12 13 14 15 16 
+            11 #  #  #  #  #  #
+            12 #  X  -  -  -  X  
+            13 #  -  X  -  X  -   
+            14 #  -  -  X  -  -  
+            15 #  -  X  -  X  -  
+            16 #  X  -  -  -  X  
+            
+            
+            */
+            //na primeira diagonal:
+            // linha se inicia na 12, coluna se inicia na 12, toda vez que a linha almenta 1, a coluna almenta 1, até chegar na linha 16 e coluna 16:
+            for(int i=0 ; i<=4 ; i++){
+                tui[12+i][12+i]= 'X';
+            }
+
+            //na outra diagonal do 'X':
+            //linha se inicia na 12, coluna se inicia na 16, toda vez que a linha almenta 1, a coluna diminui 1, até chegar na linha 16 e coluna 12:
+            for(int i=0; i<=4; i++){
+                tui[12+i][16-i]= 'X';
+            }
+        }
+
+        //se o tab[2][2] for 'O':
+        else if(tab[2][2]=='O'){
+            /*entao tenho que desenhar isso da linha 12 a 16 e coluna 12 a 16 da tui desta forma:
+
+              11 12 13 14 15 16 
+            11 #  #  #  #  #  # 
+            12 #  -  O  O  O  -  
+            13 #  O  -  -  -  O   
+            14 #  O  -  -  -  O  
+            15 #  O  -  -  -  O  
+            16 #  -  O  O  O  -  
+            
+            */
+            //nas linhas 13, 14 e 15, as colunas 12 e 16 sempre são 'O':
+            for(int l=13 ; l<=15 ; l++){ //laço que percorre as linhas 13, 14 e 15
+                tui[l][12]= 'O';
+                tui[l][16]= 'O';
+            }
+
+            //nas colunas 13, 14 e 15, as linhas 12 e 16 sempre são 'O':
+            for(int c=13 ; c<=15 ; c++){ //laço que percorre as colunas 13, 14 e 15
+                tui[12][c]= 'O';
+                tui[16][c]= 'O';
+            }
+
+        }
+        //se o tab[2][2] for vazio, ent nada é mudado (logo nao precisa do else)
         
 
 
