@@ -10,7 +10,7 @@ public class App {
         char vencedor= '*';
         do { 
             if(t.jogar()){
-                //t.exibirTabuleiro();
+                t.exibirTabuleiro();
                 Thread.sleep(1100);
 
                 for (int i=0; i < 15; i++) {

@@ -37,10 +37,19 @@ public class TUI implements TabUI{
     }
 
     private void desenhePosicao(int linha, int coluna, char caractere){
-        if(caractere=='X'){
+        if(caractere=='X'){ 
+            int linhaInicial= GROSSURALINHA + (qtCharCaractere+ESPACO*2+GROSSURALINHA)*linha; //linha onde o desenho se inicia TUI
+            int colunaInicial= GROSSURALINHA + (qtCharCaractere+ESPACO*2+GROSSURALINHA)*coluna; //coluna onde o desenho se inicia na TUI
+
+            int linhaTermino= qtCharCaractere+(qtCharCaractere+ESPACO*2+GROSSURALINHA)*linha; //linha onde o desenho se termina TUI
+            int colunaTermino= qtCharCaractere+(qtCharCaractere+ESPACO*2+GROSSURALINHA)*coluna; //coluna onde o desenho se termina na TUI
+
             for(int i=0; i<qtCharCaractere; i++){
-                tabTui[1+(qtCharCaractere+3)*linha+i][1+(qtCharCaractere+3)*coluna+i]= caractere;
-                tabTui[qtCharCaractere+(qtCharCaractere+3)*linha-i][1+(qtCharCaractere+3)*coluna+i]= caractere;
+                //primeira diagonal do X:
+                tabTui[linhaInicial+i][colunaInicial+i]= caractere;  
+
+                //segunda diagonal do X:
+                tabTui[linhaInicial+i][colunaTermino-i]= caractere; 
             }
         }
         else if(caractere=='O'){
@@ -58,8 +67,8 @@ public class TUI implements TabUI{
         for (int l = 0; l < tabTui.length; l++) {
             for (int c = 0; c < tabTui.length; c++) {
                 //linhas do desenho:
-                if(l== ESPACO*2 + qtCharCaractere || l== ESPACO*4 + qtCharCaractere*2 + 1
-                || c== ESPACO*2 + qtCharCaractere || c== ESPACO*4 + qtCharCaractere*2 + 1){
+                if(l== ESPACO*2 + qtCharCaractere || l== ESPACO*4 + qtCharCaractere*2 + GROSSURALINHA
+                || c== ESPACO*2 + qtCharCaractere || c== ESPACO*4 + qtCharCaractere*2 + GROSSURALINHA){
                     tabTui[l][c]='#';
                 }
                 else{
