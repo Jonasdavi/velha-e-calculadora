@@ -21,12 +21,13 @@ public class TUI implements TabUI{
     @Override
     public void desenheTabuleiro(char[][] tab) {
 
+        //atualiza para depois exibir
         for (int l = 0; l < tab.length; l++) {
             for (int c = 0; c < tab.length; c++) {
                 desenhePosicao(l, c, tab[l][c]);
             }
         }
-
+        //exibindo após atualizar as posicoes
         for (int l = 0; l < tabTui.length; l++) {
             for (int c = 0; c < tabTui.length; c++) {
                 System.out.print(tabTui[l][c]);
@@ -37,13 +38,13 @@ public class TUI implements TabUI{
     }
 
     private void desenhePosicao(int linha, int coluna, char caractere){
+        int linhaInicial= GROSSURALINHA + (qtCharCaractere+ESPACO*2+GROSSURALINHA)*linha; //linha onde o desenho se inicia TUI
+        int colunaInicial= GROSSURALINHA + (qtCharCaractere+ESPACO*2+GROSSURALINHA)*coluna; //coluna onde o desenho se inicia na TUI
+
+        int linhaTermino= qtCharCaractere+(qtCharCaractere+ESPACO*2+GROSSURALINHA)*linha; //linha onde o desenho se termina TUI
+        int colunaTermino= qtCharCaractere+(qtCharCaractere+ESPACO*2+GROSSURALINHA)*coluna; //coluna onde o desenho se termina na TUI
+
         if(caractere=='X'){ 
-            int linhaInicial= GROSSURALINHA + (qtCharCaractere+ESPACO*2+GROSSURALINHA)*linha; //linha onde o desenho se inicia TUI
-            int colunaInicial= GROSSURALINHA + (qtCharCaractere+ESPACO*2+GROSSURALINHA)*coluna; //coluna onde o desenho se inicia na TUI
-
-            int linhaTermino= qtCharCaractere+(qtCharCaractere+ESPACO*2+GROSSURALINHA)*linha; //linha onde o desenho se termina TUI
-            int colunaTermino= qtCharCaractere+(qtCharCaractere+ESPACO*2+GROSSURALINHA)*coluna; //coluna onde o desenho se termina na TUI
-
             for(int i=0; i<qtCharCaractere; i++){
                 //primeira diagonal do X:
                 tabTui[linhaInicial+i][colunaInicial+i]= caractere;  
@@ -55,8 +56,13 @@ public class TUI implements TabUI{
         else if(caractere=='O'){
             for(int l=0; l<qtCharCaractere; l++){
                 for (int c=0; c<qtCharCaractere; c++) {
-                    if(l==0 && c!=0 && c!=qtCharCaractere-1 || l==qtCharCaractere-1 && c!=0 && c!=qtCharCaractere-1|| c==0 && l!=0 && l!=qtCharCaractere-1|| c==qtCharCaractere-1 && l!=0 && l!=qtCharCaractere-1){
-                        tabTui[l+1+(qtCharCaractere+3)*linha][c+1+(qtCharCaractere+3)*coluna]= caractere;
+
+                    if(l==0 && c>0 && c<qtCharCaractere-1 //primeira linha horizontal da bola
+                    || l==qtCharCaractere-1 && c>0 && c<qtCharCaractere-1 //ultima linha horizontal da bola
+                    || c==0 && l>0 && l<qtCharCaractere-1 //primeira linha vertical da bola
+                    || c==qtCharCaractere-1 && l>0 && l<qtCharCaractere-1){ ////ultima linha vertical da bola
+
+                        tabTui[linhaInicial+l][colunaInicial + c]= caractere;
                     }
                 }
             }

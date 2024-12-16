@@ -143,7 +143,7 @@ public class Tabuleiro extends Tabuleiro_base{
                 }
             }
 
-            //verificando horizontais:
+            //verificando verticais:
             /*
                0 1 2
              0 x * * 
